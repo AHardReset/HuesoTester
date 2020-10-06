@@ -6,10 +6,6 @@
  
  ## Authors
  Edgardo Garcia. Electronics Engineer. Original Analogic Schematic, Functional Testing.
-
- ### References
- https://diyusthad.com/image2cpp
- https://www.youtube.com/watch?v=cURh2-dTuI0
  
  Aaron Garibay. Mechatronics Engineer. Analog-Digital Schematic (HuesoTester), Code and documentation.
  
@@ -23,3 +19,7 @@
  Edgardo Garcia. Ingeniero Electronico. Esquematico del circuito original analogico, Pruebas funcionales.
  
  Aaron Garibay. Ingeniero Mecatronico. Esquematico del ciruito analogico digital (HuesoTester), Codigo y documentacion.
+
+ ### References
+ https://diyusthad.com/image2cpp
+ https://www.youtube.com/watch?v=cURh2-dTuI0
