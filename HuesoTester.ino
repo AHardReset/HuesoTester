@@ -1,9 +1,14 @@
 #include "definitions.h"
 #include "electronics.h"
-#include "oled.h"
 
 void setup() {
+  //Set the display
   welcome_display();
+  
+
+  //4N25 is Low at the start
+  pinMode(opto, OUTPUT);
+  digitalWrite(opto, LOW);
 
   //Set Mux first states
   pinMode(en_a, OUTPUT);
@@ -11,29 +16,28 @@ void setup() {
   pinMode(en_b, OUTPUT);
   digitalWrite(en_b, HIGH);
 
-  //4N25 is Low at the start
-  pinMode(opto, OUTPUT);
-  digitalWrite(opto, LOW);
-
   Serial.begin(9600);
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  //check_short_circuit();
-  //delay(1000);
-  //check_continuity();
-  //delay(1000);
-
-
-}
-
-/*
-  u8g.firstPage();  
-  do 
+  /* 
+  bool success = false;
+  success = check_short_circuit();
+  if(success)
   {
-    welcome_display();
-  } while( u8g.nextPage() );  
- */
-
+    delay(1000);
+    success = check_continuity();
+    delay(1000);
+  }
+  if (success)
+  {
+    //Imprimir todo bien!
+    test_success();
+    while (true);
+  }
+  */
+  check_continuity();
+  delay(5000);
+}

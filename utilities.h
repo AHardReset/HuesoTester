@@ -11,9 +11,7 @@ int short_ch_to_pin(int ch)
   case 8: return 11;
   case 7: return 7;
   case 6: return 3;
-  default: 
-    Serial.println("");
-    Serial.println("SOMETHING WENT WRONG!!!");
+  default:
     return -1;
   }
 }
@@ -45,9 +43,7 @@ int continuity_ch_to_pin(int ch, bool first_mux)
       case 2: return 16;
       case 1: return 20;
       case 0: return 17;
-      default: 
-        Serial.println("");
-        Serial.println("SOMETHING WENT WRONG!!!");
+      default:
         return -1;
     }
   }
@@ -58,9 +54,7 @@ int continuity_ch_to_pin(int ch, bool first_mux)
       case 14: return 9;
       case 13: return 5;
       case 12: return 1;
-      default: 
-        Serial.println("");
-        Serial.println("SOMETHING WENT WRONG!!!");
+      default:
         return -1;
     }
   }
@@ -74,4 +68,3 @@ void print_ch_result(int ch, float dataV)
   Serial.print(dataV);
   Serial.print("V || ");
 }
-
