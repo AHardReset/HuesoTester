@@ -1,6 +1,6 @@
 #include "utilities.h"
 #include "oled.h"
-
+int wait_after_error = 3000;
 bool check_short_circuit()
 {
   bool error = false;
@@ -21,7 +21,8 @@ bool check_short_circuit()
     if(data > max_shortV)
     {
       error = true;
-      short_circuit_error(short_ch_to_pin(ch), dataV);
+      short_circuit_error(ch, dataV);
+      delay(wait_after_error);
     }
     delay(1000/10);
   }
@@ -35,6 +36,8 @@ bool check_short_circuit()
 
   if(error)
   {
+    test_failed();
+    delay(1000);
     return false;
   }
   return true;
@@ -44,9 +47,9 @@ bool check_continuity()
 {
   //Setting hardware enabled
   
-  digitalWrite(opto, HIGH);
+  digitalWrite(relay, HIGH);
   digitalWrite(en_b, LOW);
-
+  delay(1000);
   bool error = false;
   int data = 0;
   float dataV = 0;
@@ -66,6 +69,7 @@ bool check_continuity()
     {
       error = true;
       continuity_error(ch, dataV, true);
+      delay(wait_after_error);
     }
     delay(1000/6);
   }
@@ -84,6 +88,7 @@ bool check_continuity()
     {
       error = true;
       continuity_error(ch, dataV, false);
+      delay(wait_after_error);
     }
     delay(1000/4);
   }
@@ -96,6 +101,8 @@ bool check_continuity()
   
   if(error)
   {
+    test_failed();
+    delay(1000);
     return false;
   }
   return true;

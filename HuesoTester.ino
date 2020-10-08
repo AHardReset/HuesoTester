@@ -3,12 +3,18 @@
 
 void setup() {
   //Set the display
+  debug = true;
+  wait_after_error = 3000;
   welcome_display();
   
 
-  //4N25 is Low at the start
-  pinMode(opto, OUTPUT);
-  digitalWrite(opto, LOW);
+  //Led blinking
+  pinMode(led, OUTPUT);
+  digitalWrite(led, LOW);
+
+  //Relay is Low at the start
+  pinMode(relay, OUTPUT);
+  digitalWrite(relay, LOW);
 
   //Set Mux first states
   pinMode(en_a, OUTPUT);
@@ -22,7 +28,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  /* 
+  
   bool success = false;
   success = check_short_circuit();
   if(success)
@@ -35,9 +41,9 @@ void loop() {
   {
     //Imprimir todo bien!
     test_success();
-    while (true);
+    while (true)
+    {
+      blink_led(1000);
+    }
   }
-  */
-  check_continuity();
-  delay(5000);
 }

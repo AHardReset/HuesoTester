@@ -68,3 +68,12 @@ void print_ch_result(int ch, float dataV)
   Serial.print(dataV);
   Serial.print("V || ");
 }
+
+void blink_led(int milis)
+{
+  digitalWrite(led, HIGH);
+  delay(milis);
+  digitalWrite(led, LOW);
+  delay(milis);
+
+}

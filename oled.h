@@ -5,7 +5,6 @@
 U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_NO_ACK);
 
 bool debug = true;
-int wait_after_error = 500;
 
 void welcome_display()
 {
@@ -48,7 +47,6 @@ void short_circuit_error(int ch, float dataV)
     u8g.setFont(u8g_font_fub25);
     u8g.drawStr(60, 55, pin_char);
   } while( u8g.nextPage() );
-  delay(wait_after_error);
 }
 
 void continuity_error(int ch, float dataV, bool first_mux)
@@ -73,13 +71,11 @@ void continuity_error(int ch, float dataV, bool first_mux)
   do 
   {
     u8g.setFont(u8g_font_unifont);
-    u8g.drawStr(2, 19, "No Enough Continuity");
+    u8g.drawStr(2, 19, "No Continuity");
     u8g.drawStr(2, 38, "in Pin");
     u8g.setFont(u8g_font_fub25);
     u8g.drawStr(60, 55, pin_char);
   } while( u8g.nextPage() );
-
-  delay(wait_after_error);
 }
 
 void test_success()
@@ -88,6 +84,16 @@ void test_success()
   do 
   {
     u8g.setFont(u8g_font_fub25);
-    u8g.drawStr(2, 19, "All Ok");
+    u8g.drawStr(0, 38, "OK");
+  } while( u8g.nextPage() );
+}
+
+void test_failed()
+{
+  u8g.firstPage();
+  do 
+  {
+    u8g.setFont(u8g_font_fub25);
+    u8g.drawStr(2, 30, "Failed");
   } while( u8g.nextPage() );
 }

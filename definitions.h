@@ -13,9 +13,10 @@
 #define s2b 4
 #define s3b 3
 
-#define opto 9
+#define relay 9
+#define led 13
 
 #define max_shortV 5
-#define min_continuityV 1000
+#define min_continuityV 1013
 CD74HC4067 mux_a(s0a, s1a, s2a, s3a);
 CD74HC4067 mux_b(s0b, s1b, s2b, s3b);
