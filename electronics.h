@@ -6,10 +6,12 @@ bool check_short_circuit()
   bool error = false;
   int data = 0;
   float dataV = 0;
+  digitalWrite(relay, LOW);
 
   for(short int ch = 15; ch > 5; ch--)
   {
     mux_a.channel(ch);
+    delay(50);
     data = analogRead(sig_a);
     dataV = convert_data_to_V(data);
 
@@ -24,7 +26,6 @@ bool check_short_circuit()
       short_circuit_error(ch, dataV);
       delay(wait_after_error);
     }
-    delay(1000/10);
   }
 
   if(debug)
@@ -49,7 +50,7 @@ bool check_continuity()
   
   digitalWrite(relay, HIGH);
   digitalWrite(en_b, LOW);
-  delay(1000);
+  delay(500);
   bool error = false;
   int data = 0;
   float dataV = 0;
@@ -57,6 +58,7 @@ bool check_continuity()
   for(int ch=15; ch>-1; ch--)
   {
     mux_a.channel(ch);
+    delay(50);
     data = analogRead(sig_a);
     dataV = convert_data_to_V(data);
 
@@ -71,11 +73,11 @@ bool check_continuity()
       continuity_error(ch, dataV, true);
       delay(wait_after_error);
     }
-    delay(1000/6);
   }
   for(int ch=15; ch>11; ch--)
   {
     mux_b.channel(ch);
+    delay(50);
     data = analogRead(sig_b);
     dataV = convert_data_to_V(data);
 
@@ -90,7 +92,6 @@ bool check_continuity()
       continuity_error(ch, dataV, false);
       delay(wait_after_error);
     }
-    delay(1000/4);
   }
 
   if(debug){

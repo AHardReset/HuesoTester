@@ -3,7 +3,7 @@
 
 void setup() {
   //Set the display
-  debug = true;
+  debug = false;
   wait_after_error = 3000;
   welcome_display();
   
@@ -15,14 +15,17 @@ void setup() {
   //Relay is Low at the start
   pinMode(relay, OUTPUT);
   digitalWrite(relay, LOW);
-
+  
   //Set Mux first states
   pinMode(en_a, OUTPUT);
   digitalWrite(en_a, LOW);
   pinMode(en_b, OUTPUT);
   digitalWrite(en_b, HIGH);
 
-  Serial.begin(9600);
+  if(debug)
+  {
+    Serial.begin(9600);
+  }
 
 }
 
